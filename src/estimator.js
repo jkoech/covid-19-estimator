@@ -44,19 +44,18 @@ const ICUCare = (infectionsByRequestedTime) => {
 };
 
 
-const ventilators = (infectionsByRequestedTime) => {
-  Math.trunc((infectionsByRequestedTime * 2) / 100);
-};
+const ventilators = (infectionsByRequestedTime) => Math.trunc(
+  (infectionsByRequestedTime * 2) / 100
+);
 
 const calculateDollarsInFlight = (
   avgDailyIncomeInUSD, avgDailyIncomePopulation,
   infectionsByRequestedTime, periodType, timeToElapse
 ) => {
   const period = periodTypeToDays(periodType) * timeToElapse;
-  const dollarsInFlight = Math.trunc(
+  return Math.trunc(
     (infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD) / period
   );
-  return dollarsInFlight;
 };
 
 // End of challenge 3 functions
