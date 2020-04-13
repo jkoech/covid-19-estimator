@@ -40,12 +40,12 @@ const availableBeds = (
  */
 
 const ICUCare = (infectionsByRequestedTime) => {
-  Math.trunc(0.05 * infectionsByRequestedTime);
+  Math.trunc((infectionsByRequestedTime * 5) / 100);
 };
 
 
 const ventilators = (infectionsByRequestedTime) => {
-  Math.trunc(0.02 * infectionsByRequestedTime);
+  Math.trunc((infectionsByRequestedTime * 2) / 100);
 };
 
 const calculateDollarsInFlight = (
@@ -53,9 +53,10 @@ const calculateDollarsInFlight = (
   infectionsByRequestedTime, periodType, timeToElapse
 ) => {
   const period = periodTypeToDays(periodType) * timeToElapse;
-  const dollarsInFlight = Math.trunc((infectionsByRequestedTime * avgDailyIncomePopulation
-    * avgDailyIncomeInUSD) / period);
-  return { dollarsInFlight };
+  const dollarsInFlight = Math.trunc(
+    (infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD) / period
+  );
+  return dollarsInFlight;
 };
 
 // End of challenge 3 functions
