@@ -30,12 +30,9 @@ const fifteenPercentile = (infectionsByRequestedTime) => Math.floor(
 const availableBeds = (
   totalHospitalBeds,
   severeCasesByRequestedTime
-) => {
-  const availableBedSpace = 0.35 * totalHospitalBeds;
-  return Math.trunc(
-    availableBedSpace - severeCasesByRequestedTime
-  );
-};
+) => Math.trunc(
+  (totalHospitalBeds * 0.35) - severeCasesByRequestedTime
+);
 // End of challenge 2 functions
 
 /**
@@ -95,7 +92,7 @@ const covid19ImpactEstimator = (data) => {
     impact.infectionsByRequestedTime
   );
   severeImpact.severeCasesByRequestedTime = fifteenPercentile(
-    impact.infectionsByRequestedTime
+    severeImpact.infectionsByRequestedTime
   );
 
   impact.hospitalBedsByRequestedTime = availableBeds(
