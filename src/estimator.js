@@ -12,9 +12,11 @@ const periodTypeToDays = (periodType) => {
   }
 };
 
-const factorial = (periodType, timeToElapse) => 2 ** Math.trunc(
-  (periodTypeToDays(periodType) * timeToElapse) / 3
-);
+const factorial = (periodType, timeToElapse) => {
+  const period = periodTypeToDays(periodType);
+  return 2 ** Math.trunc((period * timeToElapse) / 3);
+};
+
 // End of challenge 1 functions
 
 /**
