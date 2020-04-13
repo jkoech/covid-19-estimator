@@ -21,7 +21,7 @@ const factorial = (periodType, timeToElapse) => 2 ** Math.trunc(
  * Beginning of challenge 2 functions
  */
 
-const fifteenPercentile = (infectionsByRequestedTime) => Math.trunc(
+const fifteenPercentile = (infectionsByRequestedTime) => Math.floor(
   0.15 * infectionsByRequestedTime
 );
 
