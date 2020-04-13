@@ -39,18 +39,21 @@ const availableBeds = (
  * Beginning of challenge 3 functions
  */
 
-const ICUCare = (infectionsByRequestedTime) => {
-  Math.trunc((infectionsByRequestedTime * 5) / 100);
-};
+const ICUCare = (infectionsByRequestedTime) => Math.trunc(
+  (infectionsByRequestedTime * 5) / 100
+);
 
 
-const ventilators = (infectionsByRequestedTime) => Math.trunc(
+const ventilatorCases = (infectionsByRequestedTime) => Math.trunc(
   (infectionsByRequestedTime * 2) / 100
 );
 
 const calculateDollarsInFlight = (
-  avgDailyIncomeInUSD, avgDailyIncomePopulation,
-  infectionsByRequestedTime, periodType, timeToElapse
+  avgDailyIncomeInUSD,
+  avgDailyIncomePopulation,
+  infectionsByRequestedTime,
+  periodType,
+  timeToElapse
 ) => {
   const period = periodTypeToDays(periodType) * timeToElapse;
   return Math.trunc(
@@ -111,11 +114,10 @@ const covid19ImpactEstimator = (data) => {
     severeImpact.infectionsByRequestedTime
   );
 
-  impact.casesForVentilatorsByRequestedTime = ventilators(
+  impact.casesForVentilatorsByRequestedTime = ventilatorCases(
     impact.infectionsByRequestedTime
   );
-
-  severeImpact.casesForVentilatorsByRequestedTime = ventilators(
+  severeImpact.casesForVentilatorsByRequestedTime = ventilatorCases(
     severeImpact.infectionsByRequestedTime
   );
 
