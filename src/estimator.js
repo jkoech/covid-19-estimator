@@ -62,7 +62,6 @@ const calculateDollarsInFlight = (
 // End of challenge 3 functions
 
 const covid19ImpactEstimator = (data) => {
-
   const output = {
     data, // the input data you got
     impact: {}, // your best case estimation
